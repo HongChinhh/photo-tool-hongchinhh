@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyPhotos
@@ -16,7 +15,12 @@ namespace MyPhotos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+#if AS_MDI_APP
+            Application.Run(new ParentForm());
+#else
             Application.Run(new MainForm());
+#endif
+
         }
     }
 }
