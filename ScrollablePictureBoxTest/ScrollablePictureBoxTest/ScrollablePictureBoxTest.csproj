@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37114118-DB5D-4363-81DA-088E624AA0BB}</ProjectGuid>
+    <ProjectGuid>{32B651E6-AA09-4AD8-897B-0B49703CF98D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ScrollablePictureBoxTest</RootNamespace>
     <AssemblyName>ScrollablePictureBoxTest</AssemblyName>
@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyPhotoAlbum">
-      <HintPath>..\..\MyPhotoAlbum\bin\Debug\MyPhotoAlbum.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -82,7 +79,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyPhotoControls\MyPhotoControls.csproj">
+    <ProjectReference Include="..\..\MyPhotos\MyPhotoControls\MyPhotoControls.csproj">
       <Project>{ABE505EF-7036-49D3-AD12-F0C44552FFD5}</Project>
       <Name>MyPhotoControls</Name>
     </ProjectReference>

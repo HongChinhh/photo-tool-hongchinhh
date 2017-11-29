@@ -9,11 +9,6 @@ namespace MyAlbumExplorer
     public partial class ExplorerForm : Form
     {
         private Photograph _currentPhoto = null;
-        private MyListViewComparer _comparer;
-        private MyListViewComparer MyComparer
-        {
-            get { return _comparer; }
-        }
 
         private bool _showingAlbums = true;
         private bool ShowingAlbums
@@ -22,25 +17,31 @@ namespace MyAlbumExplorer
             set { _showingAlbums = value; }
         }
 
+        private MyListViewComparer _comparer;
+        private MyListViewComparer MyComparer
+        {
+            get { return _comparer; }
+        }
+
         public ExplorerForm()
         {
             InitializeComponent();
         }
+
         protected override void OnLoad(EventArgs e)
         {
             // Assign title bar
             Version v = new Version(Application.ProductVersion);
-            this.Text = String.Format("MyAlbumExplorer {0:#}.{1:#}",
-                                        v.Major, v.Minor);
+            this.Text = String.Format("MyAlbumExplorer {0:#}.{1:#}", v.Major, v.Minor);
+
             atvAlbumTree.Nodes.Clear();
             atvAlbumTree.AddAlbumDirectory("Default Albums", AlbumManager.DefaultPath);
 
             _comparer = new MyListViewComparer(lvAlbumList);
             lvAlbumList.ListViewItemSorter = MyComparer;
-
             base.OnLoad(e);
-
         }
+
         private void atvAlbumTree_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             if (_currentPhoto != null)
@@ -50,6 +51,7 @@ namespace MyAlbumExplorer
                 _currentPhoto = null;
             }
         }
+
         private void atvAlbumTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
@@ -79,9 +81,12 @@ namespace MyAlbumExplorer
             {
                 lvAlbumList.EndUpdate();
             }
+
+
+
         }
 
-        
+
         private void DisplayPhoto(PhotoNode photoNode)
         {
             spbxPhoto.Visible = true;
@@ -89,6 +94,7 @@ namespace MyAlbumExplorer
             _currentPhoto = photoNode.Photograph;
             spbxPhoto.Image = _currentPhoto.Image;
         }
+
 
         private void mnuExit_Click(object sender, EventArgs e)
         {
@@ -103,8 +109,11 @@ namespace MyAlbumExplorer
             mnuViewList.Checked = (v == View.List);
             mnuViewDetails.Checked = (v == View.Details);
             mnuViewTiles.Checked = (v == View.Tile);
+
+
         }
-        private void menuView_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+
+        private void mnuView_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem item = e.ClickedItem;
             string enumVal = item.Tag as string;
@@ -142,7 +151,6 @@ namespace MyAlbumExplorer
         {
             item.SubItems.Clear();
             item.Text = Path.GetFileNameWithoutExtension(path);
-
             ListViewItem.ListViewSubItem subitem;
             if (mgr == null)
             {
@@ -155,6 +163,7 @@ namespace MyAlbumExplorer
             {
                 PhotoAlbum album = mgr.Album;
                 int count = album.Count;
+
 
                 item.Tag = mgr;
                 item.SubItems.Add(album.Title);
@@ -188,6 +197,7 @@ namespace MyAlbumExplorer
                 }
             }
         }
+
         private void AssignSubItems(ListViewItem item, Photograph photo)
         {
             item.SubItems.Clear();
@@ -217,16 +227,16 @@ namespace MyAlbumExplorer
                 lvAlbumList.Sorting = SortOrder.Ascending;
             }
             lvAlbumList.Sort();
-
         }
 
         private void mnuEditProperties_Click(object sender, EventArgs e)
         {
             if (lvAlbumList.Focused)
                 DisplayListItemProperties();
-            else if (atvAlbumTree.Focused)
+            else
                 DisplayTreeNodeProperties();
         }
+
         private void DisplayTreeNodeProperties()
         {
             TreeNode node = atvAlbumTree.SelectedNode;
@@ -245,6 +255,7 @@ namespace MyAlbumExplorer
             atvAlbumTree.SaveAlbumChanges();
             atvAlbumTree.RefreshNode();
         }
+
         private void DisplayListItemProperties()
         {
             if (lvAlbumList.SelectedItems.Count == 1)
@@ -271,9 +282,10 @@ namespace MyAlbumExplorer
                     }
                 }
                 else
-                    MessageBox.Show("The properties for this item cannot be displayed");
+                    MessageBox.Show("The properties for this item cannot be displayed.");
             }
         }
+
         private void DisplayAlbumProperties(AlbumManager mgr)
         {
             using (AlbumEditDialog dlg = new AlbumEditDialog(mgr))
@@ -288,22 +300,20 @@ namespace MyAlbumExplorer
             {
                 dlg.ShowDialog();
             }
-
         }
 
         private void mnuEdit_DropDownOpening(object sender, EventArgs e)
         {
-            mnuEditLable.Enabled = true;
+            mnuEditLabel.Enabled = true;
             if (lvAlbumList.Focused)
-                mnuEditLable.Text = "Captio&n";
+                mnuEditLabel.Text = "Captio&n";
             else if (atvAlbumTree.Focused)
-                mnuEditLable.Text = "&Name";
+                mnuEditLabel.Text = "&Name";
             else
-               mnuEditLable.Enabled = false;
-
+                mnuEditLabel.Enabled = false;
         }
 
-        private void mnuEditLable_Click(object sender, EventArgs e)
+        private void mnuEditLabel_Click(object sender, EventArgs e)
         {
             if (lvAlbumList.Focused)
             {
@@ -315,7 +325,6 @@ namespace MyAlbumExplorer
                 if (atvAlbumTree.SelectedNode != null)
                     atvAlbumTree.SelectedNode.BeginEdit();
             }
-
         }
 
         private void lvAlbumList_KeyDown(object sender, KeyEventArgs e)
@@ -326,7 +335,6 @@ namespace MyAlbumExplorer
                     lvAlbumList.FocusedItem.BeginEdit();
                 e.Handled = true;
             }
-
         }
 
         private void lvAlbumList_AfterLabelEdit(object sender, LabelEditEventArgs e)
@@ -336,7 +344,6 @@ namespace MyAlbumExplorer
                 e.CancelEdit = true;
                 return;
             }
-
             ListViewItem item = lvAlbumList.Items[e.Item];
 
             if (item.Tag is Photograph)
@@ -350,15 +357,14 @@ namespace MyAlbumExplorer
             {
                 RenameAlbum(item, e.Label);
             }
-
         }
+
         private void RenameAlbum(ListViewItem item, string newName)
         {
             try
             {
                 string oldPath = null;
                 string newPath = null;
-
                 if (item.Tag is AlbumManager)
                 {
                     AlbumManager mgr = (AlbumManager)item.Tag;
@@ -387,7 +393,6 @@ namespace MyAlbumExplorer
 
         private void lvAlbumList_ItemActivate(object sender, EventArgs e)
         {
-
             ListViewItem item = lvAlbumList.SelectedItems[0];
             TreeNode node = null;
             if (ShowingAlbums)
@@ -398,6 +403,7 @@ namespace MyAlbumExplorer
                     albumPath = item.Tag as string;
                 else
                     albumPath = mgr.FullName;
+
 
                 if (albumPath != null)
                     node = atvAlbumTree.FindAlbumNode(albumPath);
@@ -410,9 +416,7 @@ namespace MyAlbumExplorer
             }
             if (node != null)
                 atvAlbumTree.SelectedNode = node;
-
-
         }
     }
-
 }
+

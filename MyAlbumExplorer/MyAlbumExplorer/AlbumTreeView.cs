@@ -11,6 +11,7 @@ namespace MyAlbumExplorer
     {
         public AlbumDirectoryNode AddAlbumDirectory(string name, string albumDir)
         {
+
             AlbumDirectoryNode node = new AlbumDirectoryNode(name, albumDir);
             this.Nodes.Add(node);
             return node;
@@ -25,14 +26,15 @@ namespace MyAlbumExplorer
         }
         private void ExpandAlbumDirectory(AlbumDirectoryNode node)
         {
+
             BeginUpdate();
             try
             {
+
                 node.CreateAlbumNodes();
             }
             finally { EndUpdate(); }
         }
-
         private void ExpandAlbum(AlbumNode node)
         {
             AlbumManager mgr = node.GetManager(true);
@@ -75,7 +77,6 @@ namespace MyAlbumExplorer
                     break;
                 }
             }
-
         }
 
         protected override void OnAfterLabelEdit(NodeLabelEditEventArgs e)
@@ -87,16 +88,18 @@ namespace MyAlbumExplorer
             }
             if (e.Node is AlbumNode)
             {
+
                 AlbumNode node = e.Node as AlbumNode;
                 e.CancelEdit = !node.RenameAlbum(e.Label);
             }
             else if (e.Node is PhotoNode)
             {
+
                 PhotoNode node = e.Node as PhotoNode;
                 node.Photograph.Caption = e.Label;
                 SaveAlbumChanges();
             }
-
+            base.OnAfterLabelEdit(e);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -108,6 +111,7 @@ namespace MyAlbumExplorer
                 e.Handled = true;
             }
         }
+
         public void RefreshNode()
         {
             IRefreshableNode refresh = SelectedNode as IRefreshableNode;
@@ -117,6 +121,7 @@ namespace MyAlbumExplorer
 
         public void SaveAlbumChanges()
         {
+
             AlbumNode aNode = SelectedNode as AlbumNode;
             if (aNode == null)
             {
@@ -134,10 +139,16 @@ namespace MyAlbumExplorer
                     if (aNode.IsExpanded)
                     {
                         foreach (PhotoNode pNode in aNode.Nodes)
+                        {
+                           
                             pNode.RefreshNode();
+                        }
                     }
                 }
             }
+
+
+
         }
 
         internal AlbumNode FindAlbumNode(string path)
@@ -147,12 +158,13 @@ namespace MyAlbumExplorer
             {
                 foreach (AlbumNode node in dirNode.AlbumNodes)
                 {
-                    if (String.Equals(node.AlbumPath, path, StringComparison.InvariantCultureIgnoreCase))
+                    if (String.Equals(node.AlbumPath, path,StringComparison.InvariantCultureIgnoreCase))
                         return node;
                 }
             }
             return null;
         }
+
         internal PhotoNode FindPhotoNode(Photograph photo)
         {
             AlbumNode albumNode = SelectedNode as AlbumNode;
@@ -167,6 +179,5 @@ namespace MyAlbumExplorer
             }
             return null;
         }
-
     }
 }

@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExplorerForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.atvAlbumTree = new MyAlbumExplorer.AlbumTreeView();
             this.imageListSmall = new System.Windows.Forms.ImageList(this.components);
-            this.spbxPhoto = new Manning.MyPhotoControls.ScrollablePictureBox();
-            this.imageListLarge = new System.Windows.Forms.ImageList(this.components);
             this.lvAlbumList = new System.Windows.Forms.ListView();
+            this.imageListLarge = new System.Windows.Forms.ImageList(this.components);
+            this.spbxPhoto = new Manning.MyPhotoControls.ScrollablePictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewLarge = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,9 +45,9 @@
             this.mnuViewList = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewTiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.atvAlbumTree = new MyAlbumExplorer.AlbumTreeView();
             this.mnuEditProperties = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditLable = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditLabel = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,24 +70,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lvAlbumList);
             this.splitContainer1.Panel2.Controls.Add(this.spbxPhoto);
-            this.splitContainer1.Size = new System.Drawing.Size(434, 238);
+            this.splitContainer1.Size = new System.Drawing.Size(434, 237);
             this.splitContainer1.SplitterDistance = 144;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // atvAlbumTree
-            // 
-            this.atvAlbumTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.atvAlbumTree.HideSelection = false;
-            this.atvAlbumTree.ImageIndex = 1;
-            this.atvAlbumTree.ImageList = this.imageListSmall;
-            this.atvAlbumTree.LabelEdit = true;
-            this.atvAlbumTree.Location = new System.Drawing.Point(0, 0);
-            this.atvAlbumTree.Name = "atvAlbumTree";
-            this.atvAlbumTree.SelectedImageIndex = 0;
-            this.atvAlbumTree.Size = new System.Drawing.Size(144, 238);
-            this.atvAlbumTree.TabIndex = 0;
-            this.atvAlbumTree.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.atvAlbumTree_BeforeSelect);
-            this.atvAlbumTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.atvAlbumTree_AfterSelect);
             // 
             // imageListSmall
             // 
@@ -100,28 +85,6 @@
             this.imageListSmall.Images.SetKeyName(4, "AlbumLock");
             this.imageListSmall.Images.SetKeyName(5, "AlbumDir");
             // 
-            // spbxPhoto
-            // 
-            this.spbxPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spbxPhoto.Image = null;
-            this.spbxPhoto.Location = new System.Drawing.Point(0, 0);
-            this.spbxPhoto.Name = "spbxPhoto";
-            this.spbxPhoto.Size = new System.Drawing.Size(286, 238);
-            this.spbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.spbxPhoto.TabIndex = 0;
-            this.spbxPhoto.TabStop = false;
-            // 
-            // imageListLarge
-            // 
-            this.imageListLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLarge.ImageStream")));
-            this.imageListLarge.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListLarge.Images.SetKeyName(0, " Photo");
-            this.imageListLarge.Images.SetKeyName(1, "Album");
-            this.imageListLarge.Images.SetKeyName(2, "AlbumSelect");
-            this.imageListLarge.Images.SetKeyName(3, "AlbumError");
-            this.imageListLarge.Images.SetKeyName(4, "AlbumLock");
-            this.imageListLarge.Images.SetKeyName(5, "AlbumDir");
-            // 
             // lvAlbumList
             // 
             this.lvAlbumList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -130,7 +93,7 @@
             this.lvAlbumList.LargeImageList = this.imageListLarge;
             this.lvAlbumList.Location = new System.Drawing.Point(0, 0);
             this.lvAlbumList.Name = "lvAlbumList";
-            this.lvAlbumList.Size = new System.Drawing.Size(286, 238);
+            this.lvAlbumList.Size = new System.Drawing.Size(286, 237);
             this.lvAlbumList.SmallImageList = this.imageListSmall;
             this.lvAlbumList.TabIndex = 1;
             this.lvAlbumList.UseCompatibleStateImageBehavior = false;
@@ -138,6 +101,28 @@
             this.lvAlbumList.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvAlbumList_ColumnClick);
             this.lvAlbumList.ItemActivate += new System.EventHandler(this.lvAlbumList_ItemActivate);
             this.lvAlbumList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvAlbumList_KeyDown);
+            // 
+            // imageListLarge
+            // 
+            this.imageListLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListLarge.ImageStream")));
+            this.imageListLarge.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListLarge.Images.SetKeyName(0, "Photo");
+            this.imageListLarge.Images.SetKeyName(1, "Album");
+            this.imageListLarge.Images.SetKeyName(2, "AlbumSelect");
+            this.imageListLarge.Images.SetKeyName(3, "AlbumError");
+            this.imageListLarge.Images.SetKeyName(4, "AlbumLock");
+            this.imageListLarge.Images.SetKeyName(5, "AlbumDir");
+            // 
+            // spbxPhoto
+            // 
+            this.spbxPhoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spbxPhoto.Image = null;
+            this.spbxPhoto.Location = new System.Drawing.Point(0, 0);
+            this.spbxPhoto.Name = "spbxPhoto";
+            this.spbxPhoto.Size = new System.Drawing.Size(286, 237);
+            this.spbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.spbxPhoto.TabIndex = 0;
+            this.spbxPhoto.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -159,10 +144,17 @@
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
             // 
+            // mnuExit
+            // 
+            this.mnuExit.Name = "mnuExit";
+            this.mnuExit.Size = new System.Drawing.Size(92, 22);
+            this.mnuExit.Text = "E&xit";
+            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            // 
             // mnuEdit
             // 
             this.mnuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditLable,
+            this.mnuEditLabel,
             this.mnuEditProperties});
             this.mnuEdit.Name = "mnuEdit";
             this.mnuEdit.Size = new System.Drawing.Size(39, 20);
@@ -181,7 +173,7 @@
             this.mnuView.Size = new System.Drawing.Size(44, 20);
             this.mnuView.Text = "&View";
             this.mnuView.DropDownOpening += new System.EventHandler(this.mnuView_DropDownOpening);
-            this.mnuView.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuView_DropDownItemClicked);
+            this.mnuView.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuView_DropDownItemClicked);
             // 
             // mnuViewLarge
             // 
@@ -218,38 +210,46 @@
             this.mnuViewTiles.Tag = "Tile";
             this.mnuViewTiles.Text = "&Tiles";
             // 
-            // mnuExit
+            // atvAlbumTree
             // 
-            this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(152, 22);
-            this.mnuExit.Text = "&Exit";
-            this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+            this.atvAlbumTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.atvAlbumTree.HideSelection = false;
+            this.atvAlbumTree.ImageIndex = 0;
+            this.atvAlbumTree.ImageList = this.imageListSmall;
+            this.atvAlbumTree.LabelEdit = true;
+            this.atvAlbumTree.Location = new System.Drawing.Point(0, 0);
+            this.atvAlbumTree.Name = "atvAlbumTree";
+            this.atvAlbumTree.SelectedImageIndex = 0;
+            this.atvAlbumTree.Size = new System.Drawing.Size(144, 237);
+            this.atvAlbumTree.TabIndex = 0;
+            this.atvAlbumTree.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.atvAlbumTree_BeforeSelect);
+            this.atvAlbumTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.atvAlbumTree_AfterSelect);
             // 
             // mnuEditProperties
             // 
             this.mnuEditProperties.Name = "mnuEditProperties";
             this.mnuEditProperties.Size = new System.Drawing.Size(152, 22);
-            this.mnuEditProperties.Text = "&Properties...";
+            this.mnuEditProperties.Text = "&Properties";
             this.mnuEditProperties.Click += new System.EventHandler(this.mnuEditProperties_Click);
             // 
-            // mnuEditLable
+            // mnuEditLabel
             // 
-            this.mnuEditLable.Name = "mnuEditLable";
-            this.mnuEditLable.Size = new System.Drawing.Size(152, 22);
-            this.mnuEditLable.Text = "&Lable";
-            this.mnuEditLable.Click += new System.EventHandler(this.mnuEditLable_Click);
+            this.mnuEditLabel.Name = "mnuEditLabel";
+            this.mnuEditLabel.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditLabel.Text = "&Label";
+            this.mnuEditLabel.Click += new System.EventHandler(this.mnuEditLabel_Click);
             // 
             // ExplorerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 262);
+            this.ClientSize = new System.Drawing.Size(434, 261);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ExplorerForm";
-            this.Text = "Album Explorer";
+            this.Text = "AlbumExplorer";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -281,7 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuViewDetails;
         private System.Windows.Forms.ToolStripMenuItem mnuViewTiles;
         private System.Windows.Forms.ToolStripMenuItem mnuEditProperties;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditLable;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditLabel;
     }
 }
 

@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.calDates = new System.Windows.Forms.MonthCalendar();
+            this.calDate = new System.Windows.Forms.MonthCalendar();
             this.SuspendLayout();
             // 
-            // calDates
+            // calDate
             // 
-            this.calDates.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.calDates.Location = new System.Drawing.Point(0, 0);
-            this.calDates.MaxSelectionCount = 1;
-            this.calDates.Name = "calDates";
-            this.calDates.ShowToday = false;
-            this.calDates.TabIndex = 0;
-            this.calDates.MouseDown += new System.Windows.Forms.MouseEventHandler(this.calDates_MouseDown);
+            this.calDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.calDate.Location = new System.Drawing.Point(0, 0);
+            this.calDate.MaxSelectionCount = 1;
+            this.calDate.Name = "calDate";
+            this.calDate.ShowToday = false;
+            this.calDate.TabIndex = 0;
+            this.calDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.calDate_MouseDown);
             // 
             // AlbumCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.calDates);
+            this.Controls.Add(this.calDate);
             this.Name = "AlbumCalendar";
-            this.Size = new System.Drawing.Size(435, 175);
+            this.Size = new System.Drawing.Size(299, 168);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MonthCalendar calDates;
+        private System.Windows.Forms.MonthCalendar calDate;
     }
 }

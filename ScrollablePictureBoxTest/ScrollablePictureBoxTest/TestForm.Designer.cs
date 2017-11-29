@@ -36,7 +36,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(13, 13);
+            this.btnLoad.Location = new System.Drawing.Point(12, 12);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 0;
@@ -53,9 +53,9 @@
             "Normal",
             "StretchImage",
             "Zoom"});
-            this.cmbSizeMode.Location = new System.Drawing.Point(95, 14);
+            this.cmbSizeMode.Location = new System.Drawing.Point(93, 13);
             this.cmbSizeMode.Name = "cmbSizeMode";
-            this.cmbSizeMode.Size = new System.Drawing.Size(177, 21);
+            this.cmbSizeMode.Size = new System.Drawing.Size(179, 21);
             this.cmbSizeMode.TabIndex = 1;
             this.cmbSizeMode.Text = "Normal";
             this.cmbSizeMode.SelectedIndexChanged += new System.EventHandler(this.cmbSizeMode_SelectedIndexChanged);
@@ -68,23 +68,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spbxImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spbxImage.Image = null;
-            this.spbxImage.Location = new System.Drawing.Point(13, 43);
+            this.spbxImage.Location = new System.Drawing.Point(12, 42);
             this.spbxImage.Name = "spbxImage";
-            this.spbxImage.Size = new System.Drawing.Size(259, 207);
+            this.spbxImage.Size = new System.Drawing.Size(260, 207);
             this.spbxImage.TabIndex = 2;
             this.spbxImage.TabStop = false;
-            
+            this.spbxImage.Click += new System.EventHandler(this.spbxImage_Click);
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.spbxImage);
             this.Controls.Add(this.cmbSizeMode);
             this.Controls.Add(this.btnLoad);
             this.Name = "TestForm";
-            this.Text = "ScrollablePictureBox Test";
+            this.Text = "ScollablePictureBoxTest";
             ((System.ComponentModel.ISupportInitialize)(this.spbxImage)).EndInit();
             this.ResumeLayout(false);
 

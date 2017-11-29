@@ -30,10 +30,13 @@ namespace ScrollablePictureBoxTest
         {
             if (cmbSizeMode.Text.Length > 0)
             {
-                this.spbxImage.SizeMode = (PictureBoxSizeMode)Enum.Parse(typeof(PictureBoxSizeMode), cmbSizeMode.Text);
+                this.spbxImage.SizeMode = (PictureBoxSizeMode)Enum.Parse(typeof(PictureBoxSizeMode),cmbSizeMode.Text);
             }
-
         }
 
+        private void spbxImage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -24,67 +24,77 @@ namespace MyAlbumEditor
                 UpdateCalendar();
             }
         }
+
+
         public AlbumCalendar()
         {
             InitializeComponent();
         }
+
         private void UpdateCalendar()
         {
             DateTime minDate = DateTime.MaxValue;
             DateTime maxDate = DateTime.MinValue;
-            calDates.RemoveAllBoldedDates();
+            calDate.RemoveAllAnnuallyBoldedDates();
+
+
             if (Manager == null)
             {
                 minDate = DateTime.Now;
                 maxDate = DateTime.Now.AddMonths(2);
-
             }
             else
             {
                 foreach (Photograph p in Manager.Album)
                 {
                     DateTime date = p.DateTaken;
-                    calDates.AddBoldedDate(date);
+                    calDate.AddBoldedDate(date);
+
+
                     if (date < minDate) minDate = date;
                     if (date > maxDate) maxDate = date;
                 }
             }
-            calDates.MinDate = minDate;
-            calDates.MaxDate = maxDate;
-            calDates.TodayDate = minDate;
-            calDates.SelectionStart = minDate;
-            calDates.UpdateBoldedDates();
 
+            calDate.MinDate = minDate;
+            calDate.MaxDate = maxDate;
+            calDate.TodayDate = minDate;
+            calDate.SelectionStart = minDate;
+            calDate.UpdateBoldedDates();
         }
 
-        private void calDates_MouseDown(object sender, MouseEventArgs e)
+        private void calDate_MouseDown(object sender, MouseEventArgs e)
         {
             // Ignore click if no album selected
             if (Manager == null) return;
-            MonthCalendar.HitTestInfo info = calDates.HitTest(e.X, e.Y);
+
+            MonthCalendar.HitTestInfo info = calDate.HitTest(e.X, e.Y);
             if (info.HitArea == MonthCalendar.HitArea.Date)
             {
                 ContextMenuStrip cms = new ContextMenuStrip();
                 cms.ShowImageMargin = false;
+
                 // See if any photos at date
                 for (int i = 0; i < Manager.Album.Count; i++)
                 {
                     Photograph p = Manager.Album[i];
                     if (p.DateTaken.Date == info.Time.Date)
                     {
-                        ToolStripItem mnuItem = cms.Items.Add(p.FileName);
-                        mnuItem.Tag = i;
-                        mnuItem.Click += cmsItem_Click;
+                        ToolStripItem menuItem = cms.Items.Add(p.FileName);
+                        menuItem.Tag = i;
+                        menuItem.Click += cmsItem_Click;
                     }
                 }
-                if (cms.Items.Count > 0)
-                    cms.Show(calDates, e.Location);
-            }
 
+                if (cms.Items.Count > 0)
+                    cms.Show(calDate, e.Location);
+            }
         }
+
         private void cmsItem_Click(object sender, EventArgs e)
         {
             ToolStripItem item = sender as ToolStripItem;
+
             if (item != null && item.Tag is int)
             {
                 Manager.Index = (int)item.Tag;
@@ -100,6 +110,12 @@ namespace MyAlbumEditor
                 }
             }
         }
-
     }
 }
+
+
+
+             
+        
+   
+

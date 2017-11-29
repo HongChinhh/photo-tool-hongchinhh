@@ -2,19 +2,31 @@
 using System.IO;
 using System.Windows.Forms;
 
+
 namespace MyAlbumExplorer
 {
-    internal class AlbumDirectoryNode : TreeNode
+   internal  class AlbumDirectoryNode : TreeNode
     {
         private string _albumDir;
         public string AlbumDirectory
         {
             get { return _albumDir; }
         }
+
+        public AlbumDirectoryNode(string name, string albumDir) : base(name)
+        {
+            if (albumDir == null)
+                throw new ArgumentNullException("albumDir");
+          
+
+            _albumDir = albumDir;
+            this.Nodes.Add("child");
+            this.ImageKey = "AlbumDir";
+            this.SelectedImageKey = "AlbumDir";
+        }
         public string[] AlbumFiles
         {
-            get
-            { return Directory.GetFiles(AlbumDirectory, "*.abm"); }
+            get { return Directory.GetFiles(AlbumDirectory, "*.abm"); }
         }
 
         private AlbumNode[] _albumNodes = null;
@@ -25,18 +37,6 @@ namespace MyAlbumExplorer
                 CreateAlbumNodes();
                 return _albumNodes;
             }
-        }
-        public AlbumDirectoryNode(string name, string albumDir) : base(name)
-        {
-            if (albumDir == null)
-                throw new ArgumentNullException("albumDir");
-            if (!Directory.Exists(albumDir))
-                throw new ArgumentException("albumDir is not a valid directory");
-
-            _albumDir = albumDir;
-            this.Nodes.Add("child");
-            this.ImageKey = "AlbumDir";
-            this.SelectedImageKey = "AlbumDir";
         }
 
         public void CreateAlbumNodes()

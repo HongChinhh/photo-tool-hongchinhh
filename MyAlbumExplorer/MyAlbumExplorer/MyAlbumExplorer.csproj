@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{09AFAED6-2C40-4311-9A6F-EC75A2B747EA}</ProjectGuid>
+    <ProjectGuid>{5360B553-4B82-4704-9EBB-DDF38BBA7C6F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MyAlbumExplorer</RootNamespace>
     <AssemblyName>MyAlbumExplorer</AssemblyName>
@@ -34,7 +34,6 @@
   <PropertyGroup>
     <ApplicationIcon>camera.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -90,11 +89,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyPhotoAlbum\MyPhotoAlbum.csproj">
+    <ProjectReference Include="..\..\MyPhotos\MyPhotoAlbum\MyPhotoAlbum.csproj">
       <Project>{ba28f54e-5817-4900-a0d6-621702d8e6c9}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MyPhotoControls\MyPhotoControls.csproj">
+    <ProjectReference Include="..\..\MyPhotos\MyPhotoControls\MyPhotoControls.csproj">
       <Project>{abe505ef-7036-49d3-ad12-f0c44552ffd5}</Project>
       <Name>MyPhotoControls</Name>
     </ProjectReference>

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Windows.Forms;
 
-
 namespace MyAlbumExplorer
 {
     internal class MyListViewComparer : IComparer
@@ -22,15 +21,14 @@ namespace MyAlbumExplorer
             set { _sortColumn = value; }
         }
 
-
         public MyListViewComparer(ListView lv)
         {
             _listView = lv;
             _sortColumn = 0;
         }
-
         public int Compare(object x, object y)
         {
+
             // Throws exception if not list items
             ListViewItem item1 = (ListViewItem)x;
             ListViewItem item2 = (ListViewItem)y;
@@ -78,7 +76,7 @@ namespace MyAlbumExplorer
                 DateTime x2 = (DateTime)sub2.Tag;
                 return x1.CompareTo(x2);
             }
-            throw new ArgumentException("Unable to " + "compare ListViewItem instances");
+            throw new ArgumentException("Unable to compare ListViewItem instances");
         }
     }
 }

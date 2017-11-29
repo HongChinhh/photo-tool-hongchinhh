@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MyPhotos")]
 [assembly: AssemblyDescription("Sample Application for Windows Forms in Action")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Maining Publications Co.    ")]
+[assembly: AssemblyCompany("Manning Publications Co.")]
 [assembly: AssemblyProduct("MyPhotos")]
-[assembly: AssemblyCopyright("Copyright © Maining Publications")]
+[assembly: AssemblyCopyright("Copyright ©  Manning Publications")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("059d98e0-a528-4b50-97cb-c619bbac4bf2")]
+[assembly: Guid("e9373780-a424-402e-85b3-fc48ffa8f414")]
 
 // Version information for an assembly consists of the following four values:
 //

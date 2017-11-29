@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{432733D3-499B-4633-830A-AB272BE0B1C5}</ProjectGuid>
+    <ProjectGuid>{51C31B5E-C4D1-458F-BF1C-9AB8FBDC1382}</ProjectGuid>
     <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MyAlbumEditor</RootNamespace>
     <AssemblyName>MyAlbumEditor</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -40,7 +41,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -65,11 +65,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorkerProgressDialog.cs">
+    <Compile Include="WorkerProgressDaiLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerProgressDialog.Designer.cs">
-      <DependentUpon>WorkerProgressDialog.cs</DependentUpon>
+    <Compile Include="WorkerProgressDaiLog.Designer.cs">
+      <DependentUpon>WorkerProgressDaiLog.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AlbumCalendar.resx">
       <DependentUpon>AlbumCalendar.cs</DependentUpon>
@@ -88,9 +88,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="WorkerProgressDialog.resx">
-      <DependentUpon>WorkerProgressDialog.cs</DependentUpon>
+    <EmbeddedResource Include="WorkerProgressDaiLog.resx">
+      <DependentUpon>WorkerProgressDaiLog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,14 +107,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MyPhotoAlbum\MyPhotoAlbum.csproj">
+    <ProjectReference Include="..\..\MyPhotos\MyPhotoAlbum\MyPhotoAlbum.csproj">
       <Project>{ba28f54e-5817-4900-a0d6-621702d8e6c9}</Project>
       <Name>MyPhotoAlbum</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MyPhotoControls\MyPhotoControls.csproj">
+    <ProjectReference Include="..\..\MyPhotos\MyPhotoControls\MyPhotoControls.csproj">
       <Project>{abe505ef-7036-49d3-ad12-f0c44552ffd5}</Project>
       <Name>MyPhotoControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
